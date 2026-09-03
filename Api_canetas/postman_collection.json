@@ -1,0 +1,160 @@
+{
+  "info": {
+    "name": "API de Canetas",
+    "description": "CRUD de canetas com autenticação JWT.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "canetaId",
+      "value": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth / Login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario\": \"admin\",\n  \"senha\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar canetas",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/canetas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "canetas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Criar caneta",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Caneta Gel\",\n  \"marca\": \"Pentel\",\n  \"tipo\": \"GEL\",\n  \"cor\": \"Azul\",\n  \"ponta\": \"0.7 mm\",\n  \"preco\": 8.90,\n  \"estoque\": 50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/canetas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "canetas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar por id",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/canetas/{{canetaId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "canetas",
+            "{{canetaId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Atualizar caneta",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Caneta Gel Premium\",\n  \"marca\": \"Pentel\",\n  \"tipo\": \"GEL\",\n  \"cor\": \"Preta\",\n  \"ponta\": \"0.7 mm\",\n  \"preco\": 9.90,\n  \"estoque\": 40\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/canetas/{{canetaId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "canetas",
+            "{{canetaId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Remover caneta",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/canetas/{{canetaId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "canetas",
+            "{{canetaId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
