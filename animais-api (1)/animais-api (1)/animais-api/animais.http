@@ -1,0 +1,11 @@
+POST http://localhost:8080/animais
+Content-Type: application/json
+
+{
+  "nome": "Thor",
+  "especie": "Cachorro",
+  "raca": "Labrador",
+  "idade": 4,
+  "sexo": "Macho",
+  "disponivelParaAdocao": true
+}
